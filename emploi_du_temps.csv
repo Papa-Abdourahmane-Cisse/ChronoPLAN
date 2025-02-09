@@ -1,0 +1,156 @@
+Date,Matière,Durée,Priorité
+2025-01-09 00:00:00,Estimations,35.0,
+2025-01-09 00:00:00,Théorie des test,35.0,
+2025-01-09 00:00:00,Micro incertain,35.0,
+2025-01-09 00:00:00,Econométrie,35.0,
+2025-01-09 00:00:00,Estimation,10.0,Élevée
+2025-01-10 00:00:00,Estimation,45.0,Élevée
+2025-01-10 00:00:00,Théorie des jeux,45.0,Élevée
+2025-01-10 00:00:00,Théorie des  Test,35.0,Élevée
+2025-01-10 00:00:00,Econométrie,35.0,Moyenne
+2025-01-10 00:00:00,ANOVA,35.0,Élevée
+2025-01-11 00:00:00,Théorie des jeux,45.0,Élevée
+2025-01-11 00:00:00,Théorie des jeux,45.0,Élevée
+2025-01-11 00:00:00,Estimations,35.0,Moyenne
+2025-01-11 00:00:00,Théorie des  Tests,35.0,Moyenne
+2025-01-12 00:00:00,Théorie des jeux,45.0,Élevée
+2025-01-12 00:00:00,Théorie des jeux,45.0,Élevée
+2025-01-12 00:00:00,Estimation,35.0,Élevée
+2025-01-12 00:00:00,Théorie des  Tests,35.0,Faible
+2025-01-12 00:00:00,Anthropologie,35.0,Élevée
+2025-01-13 00:00:00,Théorie des  Tests,45.0,Faible
+2025-01-13 00:00:00,Théorie des  Jeux,45.0,Faible
+2025-01-13 00:00:00,Théorie des  Jeux,45.0,Faible
+2025-01-13 00:00:00,Estimation,35.0,Moyenne
+2025-01-13 00:00:00,Compta Nat,35.0,Moyenne
+2025-01-15 00:00:00,Théorie des jeux,45.0,Élevée
+2025-01-15 00:00:00,Théorie des jeux,45.0,Élevée
+2025-01-15 00:00:00,Théorie des jeux,45.0,Élevée
+2025-01-15 00:00:00,Estimation,45.0,Élevée
+2025-01-15 00:00:00,Anova,35.0,Moyenne
+2025-01-16 00:00:00,Théorie des jeux,45.0,Élevée
+2025-01-16 00:00:00,Théorie des jeux,45.0,Élevée
+2025-01-16 00:00:00,Théorie des jeux,45.0,Moyenne
+2025-01-16 00:00:00,Estimation,45.0,Moyenne
+2025-01-16 00:00:00,Théorie des  Tests,45.0,Moyenne
+2025-01-16 00:00:00,Anthropologie,45.0,Moyenne
+2025-01-17 00:00:00,Théorie des jeux,45.0,Élevée
+2025-01-17 00:00:00,Théorie des jeux,45.0,Élevée
+2025-01-17 00:00:00,Théorie des jeux,45.0,Élevée
+2025-01-17 00:00:00,Théorie des jeux,45.0,Élevée
+2025-01-18 00:00:00,Micro incertain,45.0,Moyenne
+2025-01-18 00:00:00,Estimation,45.0,Élevée
+2025-01-18 00:00:00,Théorie des jeux,45.0,Élevée
+2025-01-19 00:00:00,Estimation,35.0,Moyenne
+2025-01-19 00:00:00,Théorie des jeux,35.0,Moyenne
+2025-01-19 00:00:00,Théorie des test,35.0,Moyenne
+2025-01-19 00:00:00,Econométrie,45.0,Élevée
+2025-01-20 00:00:00,Estimation,45.0,Élevée
+2025-01-20 00:00:00,Théorie des Test,45.0,Élevée
+2025-01-20 00:00:00,Micro incertain,45.0,Élevée
+2025-01-20 00:00:00,Econométrie,45.0,Élevée
+2025-01-20 00:00:00,Estimation,35.0,Moyenne
+2025-01-20 00:00:00,Base de donnée 2,35.0,Moyenne
+2025-01-21 00:00:00,Estimation,45.0,Élevée
+2025-01-21 00:00:00,Théorie des  Tests,45.0,Élevée
+2025-01-21 00:00:00,Econométrie ,45.0,Moyenne
+2025-01-21 00:00:00,Base de donnée 2,45.0,Élevée
+2025-01-21 00:00:00,Anglais,2.0,Faible
+2025-01-21 00:00:00,Concurrence imparfait ,1.0,Faible
+2025-01-21 00:00:00,optimisation dynamique,1.0,Faible
+2025-01-21 00:00:00,Anglais,1.0,Faible
+2025-01-21 00:00:00,Anglais,1.0,Faible
+2025-01-21 00:00:00,Angl,1.0,Faible
+2025-01-21 00:00:00,anglais,1.0,Faible
+2025-01-22 00:00:00,Estimation,45.0,Élevée
+2025-01-22 00:00:00,Théorie des Test,45.0,Élevée
+2025-01-22 00:00:00,économétrie,45.0,Élevée
+2025-01-22 00:00:00,Micro incertain,45.0,Élevée
+2025-01-22 00:00:00,Estimation,45.0,Moyenne
+2025-01-23 00:00:00,Estimation,45.0,Élevée
+2025-01-23 00:00:00,Théorie des  Tests,45.0,Élevée
+2025-01-23 00:00:00,Micro incertain,35.0,Élevée
+2025-01-23 00:00:00,Anova,45.0,Élevée
+2025-01-23 00:00:00,Base de donnée 2,45.0,Élevée
+2025-01-24 00:00:00,Estimation,45.0,Élevée
+2025-01-24 00:00:00,Théorie des Test,45.0,Élevée
+2025-01-24 00:00:00,Base de données,45.0,Élevée
+2025-01-24 00:00:00,Estimation,45.0,Moyenne
+2025-01-25 00:00:00,Estimation,45.0,Élevée
+2025-01-25 00:00:00,Théorie des Test,45.0,Élevée
+2025-01-25 00:00:00,Base de données,45.0,Élevée
+2025-01-25 00:00:00,Micro incertain,45.0,Élevée
+2025-01-26 00:00:00,Micro incertain,35.0,Élevée
+2025-01-26 00:00:00,Estimation,45.0,Élevée
+2025-01-26 00:00:00,Théorie des test,45.0,Élevée
+2025-01-26 00:00:00,Base de données ,45.0,Élevée
+2025-01-26 00:00:00,Econométrie,45.0,Faible
+2025-01-27 00:00:00,Estimation,45.0,Élevée
+2025-01-27 00:00:00,Théorie des Test,45.0,Élevée
+2025-01-27 00:00:00,Econométrie,45.0,Élevée
+2025-01-27 00:00:00,Estimation,35.0,Moyenne
+2025-01-27 00:00:00,Théorie des Test,35.0,Moyenne
+2025-01-27 00:00:00,Micro Incertain,35.0,Moyenne
+2025-01-27 00:00:00,Base de  donnée,45.0,Élevée
+2025-01-28 00:00:00,Estimation,45.0,Élevée
+2025-01-28 00:00:00,Théorie des test,45.0,Élevée
+2025-01-28 00:00:00,économétrie ,25.0,Élevée
+2025-01-28 00:00:00,Micro incertain,25.0,Élevée
+2025-01-28 00:00:00,Base de donnée ,35.0,Élevée
+2025-01-28 00:00:00,Estimation,35.0,Faible
+2025-01-28 00:00:00,Théorie des Test,35.0,Élevée
+2025-01-29 00:00:00,Estimation,45.0,Élevée
+2025-01-29 00:00:00,Théorie des Test,45.0,Élevée
+2025-01-29 00:00:00,Base de donnée,25.0,Élevée
+2025-01-29 00:00:00,Econométrie,25.0,Élevée
+2025-01-29 00:00:00,Micro incertain,25.0,Élevée
+2025-01-29 00:00:00,Estimation,35.0,Moyenne
+2025-01-29 00:00:00,Théorie des Test,35.0,Moyenne
+2025-01-30 00:00:00,Estimation,45.0,Élevée
+2025-01-30 00:00:00,Théorie des Test,45.0,Élevée
+2025-01-30 00:00:00,Base de donnée,25.0,Élevée
+2025-01-30 00:00:00,Econométrie ,25.0,Élevée
+2025-01-30 00:00:00,Micro incertain,25.0,Élevée
+2025-01-30 00:00:00,Estimation,45.0,Élevée
+2025-01-30 00:00:00,Théorie des Test,35.0,Élevée
+2025-01-31 00:00:00,Estimation,45.0,Élevée
+2025-01-31 00:00:00,Théorie des test,45.0,Élevée
+2025-01-31 00:00:00,Base de donnée,25.0,Élevée
+2025-01-31 00:00:00,Econométrie,25.0,Élevée
+2025-01-31 00:00:00,Micro incertain,25.0,Élevée
+2025-01-31 00:00:00,Compta Nationale,35.0,Élevée
+2025-01-31 00:00:00,Estimation,35.0,Moyenne
+2025-01-31 00:00:00,Théorie des test,35.0,Moyenne
+2025-02-02 00:00:00,Estimation,45.0,Élevée
+2025-02-02 00:00:00,Théorie des Test,45.0,Élevée
+2025-02-02 00:00:00,Base de donnée,25.0,Élevée
+2025-02-02 00:00:00,Micro incertain,25.0,Élevée
+2025-02-02 00:00:00,Econométrie,25.0,Élevée
+2025-02-02 00:00:00,Tp Estimation,25.0,Élevée
+2025-02-03 00:00:00,Estimation,45.0,Élevée
+2025-02-03 00:00:00,Théorie des Test,45.0,Élevée
+2025-02-03 00:00:00,Micro incertain,25.0,Élevée
+2025-02-03 00:00:00,Econométrie,25.0,Élevée
+2025-02-03 00:00:00,Base de donnée,25.0,Élevée
+2025-02-03 00:00:00,Tp estimation,25.0,Élevée
+2025-02-03 00:00:00,Estimation,25.0,Moyenne
+2025-02-03 00:00:00,Théorie des Test,35.0,Moyenne
+,Théorie des  Test,34.8,Moyenne
+,Estimation,34.8,Moyenne
+,Estimation,45.0,Élevée
+,Théorie des  Test,45.0,Élevée
+,Estimation,45.0,Élevée
+,Estimation,45.0,Élevée
+,Théorie des  Test,45.0,Élevée
+,Théorie des test,45.0,Élevée
+,Micro incertain,6.0,Faible
+,Econométrie,6.0,Faible
+,Estimations,6.0,Faible
+,Micro incertain,6.0,Faible
+,Estimations,6.0,Faible
+,Tp Estimation,25.2,Élevée
+,Théorie des test,45.0,Élevée
+,Théorie des  Test,30.0,Moyenne
+,Estimation,45.0,Moyenne
+,Estimation,25.2,Moyenne
+2025-02-09,Micro incertain,75.0,Élevée

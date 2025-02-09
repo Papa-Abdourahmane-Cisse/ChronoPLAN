@@ -1,0 +1,4 @@
+streamlit
+pandas
+matplotlib
+pygame==2.5.2  # Remplacez par une version compatible avec Python 3.11

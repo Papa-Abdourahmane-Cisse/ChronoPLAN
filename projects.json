@@ -1,0 +1,65 @@
+[
+    {
+        "Nom": "Application Streamlit",
+        "\u00c9tapes": [
+            "Reste \u00e0 faire:",
+            "1 activer l'environnement virtuel ",
+            "2 installer tous les packages ",
+            "3 tester l'application ",
+            "4 cr\u00e9\u00e9 un repo github",
+            "5 li\u00e9e le repo github avec ton code",
+            "6 cliquer sur d\u00e9ployer dans\u00a0l'application"
+        ]
+    },
+    {
+        "Nom": "Anova",
+        "\u00c9tapes": [
+            "D\u00e9finition des facteurs",
+            "",
+            "Nous allons cr\u00e9er une base de donn\u00e9es avec :",
+            "",
+            "    Facteur 1 : Type de produit (A, B, C)",
+            "    Facteur 2 : R\u00e9gion (Nord, Sud)",
+            "    Facteur 3 : Type de client (Individuel, Entreprise)",
+            "    Variable d\u00e9pendante : Une mesure continue (exemple : satisfaction du client, ventes, temps de r\u00e9ponse)."
+        ]
+    },
+    {
+        "Nom": "My API",
+        "\u00c9tapes": [
+            "L'innovation dans l'analyse \u00e9conomique peut se faire en exploitant des outils avanc\u00e9s de data science, d'intelligence artificielle et de visualisation interactive. Voici quelques id\u00e9es d'applications qui pourraient apporter une r\u00e9elle valeur ajout\u00e9e :  ",
+            "",
+            "### 1\ufe0f\u20e3 **\ud83d\udcca Tableau de Bord d'Analyse \u00c9conomique en Temps R\u00e9el**  ",
+            "Une application qui collecte et visualise des indicateurs \u00e9conomiques en temps r\u00e9el (inflation, taux de ch\u00f4mage, PIB, taux d'int\u00e9r\u00eat, etc.).  ",
+            "\ud83d\udd39 **Innovation** : Utilisation du machine learning pour pr\u00e9voir les tendances \u00e9conomiques futures.  ",
+            "\ud83d\udd39 **Technos** : Streamlit/Dash pour l'interface, API OpenData, Python (Pandas, Statsmodels).  ",
+            "",
+            "### 2\ufe0f\u20e3 **\ud83d\udcc9 Pr\u00e9diction des Crises \u00c9conomiques**  ",
+            "Un mod\u00e8le bas\u00e9 sur l'IA qui analyse des s\u00e9ries temporelles pour anticiper les r\u00e9cessions ou les bulles financi\u00e8res.  ",
+            "\ud83d\udd39 **Innovation** : Utilisation de r\u00e9seaux de neurones r\u00e9currents (LSTM) pour am\u00e9liorer la pr\u00e9cision des pr\u00e9visions.  ",
+            "\ud83d\udd39 **Technos** : Python (TensorFlow, PyTorch), Big Data (Spark, Hadoop).  ",
+            "",
+            "### 3\ufe0f\u20e3 **\ud83d\udcb0 Simulateur d\u2019Impact des Politiques Mon\u00e9taires**  ",
+            "Une application permettant aux \u00e9conomistes et d\u00e9cideurs de tester diff\u00e9rents sc\u00e9narios de politique mon\u00e9taire et d\u2019en observer les effets potentiels.  ",
+            "\ud83d\udd39 **Innovation** : Mod\u00e9lisation dynamique avec des approches multi-agents.  ",
+            "\ud83d\udd39 **Technos** : NetLogo, Python (Agent-Based Modelling).  ",
+            "",
+            "### 4\ufe0f\u20e3 **\ud83d\udce1 Analyse de Sentiment sur les March\u00e9s Financiers**  ",
+            "Un outil qui analyse les r\u00e9seaux sociaux, les articles de presse et les rapports financiers pour \u00e9valuer le climat \u00e9conomique.  ",
+            "\ud83d\udd39 **Innovation** : NLP (Traitement du Langage Naturel) pour d\u00e9tecter les signaux faibles annonciateurs de crises ou d\u2019opportunit\u00e9s.  ",
+            "\ud83d\udd39 **Technos** : Python (NLTK, Transformers), Web Scraping (BeautifulSoup, Scrapy).  ",
+            "",
+            "### 5\ufe0f\u20e3 **\ud83c\udf0d Analyse de la Transition \u00c9conomique Vers un Mod\u00e8le Durable**  ",
+            "Un tableau de bord interactif qui mesure l\u2019\u00e9volution des \u00e9conomies vers un mod\u00e8le plus \u00e9cologique et inclusif.  ",
+            "\ud83d\udd39 **Innovation** : Utilisation d\u2019indicateurs alternatifs au PIB (empreinte carbone, bien-\u00eatre \u00e9conomique).  ",
+            "\ud83d\udd39 **Technos** : Streamlit, Tableau, Python (Matplotlib, Seaborn).  ",
+            "",
+            "### 6\ufe0f\u20e3 **\ud83d\uded2 Application de Pr\u00e9diction de l\u2019Inflation \u00e0 Partir des Prix en Ligne**  ",
+            "Un outil qui analyse les variations des prix des produits en ligne pour anticiper l\u2019inflation avant la publication des indices officiels.  ",
+            "\ud83d\udd39 **Innovation** : Scraping de donn\u00e9es de e-commerce et int\u00e9gration avec des mod\u00e8les \u00e9conomiques.  ",
+            "\ud83d\udd39 **Technos** : Python (Scrapy, Selenium), Statsmodels.  ",
+            "",
+            "Tu veux explorer une de ces id\u00e9es en particulier ? \ud83d\ude80\ud83d\ude0a"
+        ]
+    }
+]
