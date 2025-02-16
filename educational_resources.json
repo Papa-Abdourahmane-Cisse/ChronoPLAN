@@ -1,0 +1,38 @@
+[
+    {
+        "Nom": "Guide  GPT",
+        "Type": "Livre",
+        "Lien": "https://www.google.com/url?sa=t&source=web&rct=j&opi=89978449&url=https://5066562.fs1.hubspotusercontent-na1.net/hubfs/5066562/Le%2520guide%2520ultime%2520des%2520requ%25C3%25AAtes%2520ChatGPT%2520pour%2520les%2520professionnels%2520du%2520Marketing%2520et%2520de%2520la%2520Communication.pdf&ved=2ahUKEwjEktnCg5OLAxUESfEDHayqMLkQFnoECBYQAQ&usg=AOvVaw18lm9dolrcJA7Z7CF-9pgn",
+        "Description": "guide ultime chat gpt"
+    },
+    {
+        "Nom": "Super Enginer IA",
+        "Type": "Lien",
+        "Lien": "https://app.superengineer.ai/explore-apps",
+        "Description": "C'est IA qui nous permets de creer notre propre application"
+    },
+    {
+        "Nom": "Application Streamlit",
+        "Type": "Lien",
+        "Lien": "https://docs.streamlit.io/deploy/streamlit-community-cloud/get-started",
+        "Description": "For streamlit"
+    },
+    {
+        "Nom": "Application Streamlit",
+        "Type": "Lien",
+        "Lien": "https://docs.streamlit.io/deploy/streamlit-community-cloud/get-started",
+        "Description": "For streamlit"
+    },
+    {
+        "Nom": "Les langages informatique",
+        "Type": "Lien",
+        "Lien": "Html5/css3 Php avec le le framwork Symphony Javascript avec le framwork  react\u00a0ou\u00a0angular",
+        "Description": "Html5/css3\nPhp avec le le framwork Symphony\nJavascript avec le framwork  react\u00a0ou\u00a0angular"
+    },
+    {
+        "Nom": "Cours Anglais",
+        "Type": "Livre",
+        "Lien": "https://www.google.com/url?sa=t&source=web&rct=j&opi=89978449&url=https://www.editions-ellipses.fr/index.php%3Fcontroller%3Dattachment%26id_attachment%3D48307%26srsltid%3DAfmBOooOhVD3w9BWNLOPexBc4ozbIoZbK6IkrSReR76qV9cGl0eWcJkt&ved=2ahUKEwjllZyF5bOLAxVJBdsEHZ5VHT4QFnoECCEQAQ&usg=AOvVaw2icc549Z0q8NHinlmaoL4Y",
+        "Description": "C'est une cours pour apprendre Anglais"
+    }
+]

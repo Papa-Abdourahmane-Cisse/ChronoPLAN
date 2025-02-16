@@ -1,0 +1,16 @@
+[
+    {
+        "Mati\u00e8re": "Base de  donn\u00e9e",
+        "Contenu": "-Cr\u00e9ation de base de donn\u00e9e\n-Cr\u00e9ation de Table\n-importation un Fichier csv\n-Supprimer et restaurer base de donn\u00e9e\n-creation des utilisateur",
+        "Expression": "",
+        "Couleur": "#000000",
+        "Soulign\u00e9": false
+    },
+    {
+        "Mati\u00e8re": "Anova",
+        "Contenu": "Pour le projet anova pour trouver d'interaction entre les variables d'\u00e9tudes ou entre les effets , on pourrait r\u00e9p\u00e9ter l'exprimentation en moins 5 fois pour Trouver leurs liens.\n- Graphique boxplot pour le rendement suivant la vari\u00e9t\u00e9\n-Boxplot affichant Le rendement suivant le type d'engrais\n-on doit effectuer  le test de normalit\u00e9 et Homosc\u00e9dacit\u00e9\n-on peut effectuer le :le test de shapiro ,test de levene\n-Puis on fait Anova-1 (la fonction residuelle :rest ,summary, on utilise la fonction lm)\n-Ensuite Anova-2 sans interaction\n-Anova avec interaction: interet c'est de voir si interaction est significative ou pas(var*type_eng; c'est les \u00e9toile qui nous indique s'il y'a significativt\u00e9 ou pas\n\n\n",
+        "Expression": "",
+        "Couleur": "#000000",
+        "Soulign\u00e9": false
+    }
+]

@@ -1,0 +1,14 @@
+[
+    {
+        "Nom": "Focus sur les devoirs Tables et Projet Logiciel de saisie",
+        "Description": "Il reste 5 \u00e9valuations sur table (estimations \u00e9crit et tp, EML, Micro Incertain, test) et le projet logiciel de saisie.",
+        "Cible": 32,
+        "Date limite": "2025-02-02"
+    },
+    {
+        "Nom": "Am\u00e9lioration de API",
+        "Description": "1 activer l'environnement virtuel \n2 installer tous les packages \n3 tester l'application \n4 cr\u00e9\u00e9 un repo github\n5 li\u00e9e le repo github avec ton code\n6 cliquer sur d\u00e9ployer dans\u00a0l'application",
+        "Cible": 3,
+        "Date limite": "2025-02-16"
+    }
+]
