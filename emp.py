@@ -1,13 +1,13 @@
 import streamlit as st
 import pandas as pd
-import matplotlib.pyplot as plt
-import time
 import sqlite3
 import json
 from datetime import datetime, timedelta
 import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
+import time
+import matplotlib.pyplot as plt
 
 # Configuration de la page
 st.set_page_config(page_title="ChronoPLAN", layout="wide", page_icon="📊")
@@ -53,6 +53,7 @@ st.markdown(
         border-radius: 10px;
         margin-bottom: 20px;
         background-color: #ffffff;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Ombre plus prononcée */
     }
 
     .section h2 {
@@ -72,6 +73,7 @@ st.markdown(
         font-size: 16px;
         width: 100%; /* Largeur complète pour les boutons */
         margin-bottom: 10px; /* Espacement entre les boutons */
+        border: 2px solid #555; /* Bordure pour les boutons */
     }
 
     .stButton>button:hover {
@@ -82,7 +84,7 @@ st.markdown(
         background-color: #ffffff; /* Couleur de fond blanc pour les formulaires */
         padding: 20px;
         border-radius: 10px;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Ombre plus prononcée */
     }
 
     .stForm input, .stForm select, .stForm textarea {
@@ -90,7 +92,7 @@ st.markdown(
         padding: 10px;
         margin-bottom: 10px;
         border-radius: 5px;
-        border: 1px solid #ccc;
+        border: 2px solid #ccc; /* Bordure plus visible */
     }
 
     .stForm button {
@@ -123,12 +125,12 @@ st.markdown(
         padding: 25px;
         border-radius: 15px;
         text-align: center;
-        box-shadow: 3px 3px 12px rgba(0, 0, 0, 0.1);
+        box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.2); /* Ombre plus prononcée */
         transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
     }
     .home-section:hover {
         transform: scale(1.02);
-        box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.15);
+        box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.25); /* Ombre plus prononcée */
     }
     .blue-title {
         color: #ffffff;
@@ -182,7 +184,7 @@ st.markdown(
         justify-content: center;
         margin: 20px auto;
         position: relative;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Ombre plus prononcée */
     }
     .circle::before {
         content: '🌸';
@@ -239,6 +241,19 @@ def save_to_csv(data, file_name="emploi_du_temps.csv"):
 def reset_data():
     save_to_csv(pd.DataFrame(columns=["Date", "Matière", "Durée", "Priorité"]))
     st.success("🌸 Toutes les données ont été réinitialisées ! 🌸")
+
+# Fonction pour supprimer toutes les activités
+def delete_all_activities():
+    # Supprimer toutes les entrées de la base de données
+    conn = sqlite3.connect("emploi_du_temps.db")
+    cursor = conn.cursor()
+    cursor.execute("DELETE FROM activites")
+    conn.commit()
+    conn.close()
+
+    # Réinitialiser le fichier CSV
+    reset_data()
+    st.success("Toutes les activités ont été supprimées avec succès !")
 
 # Fonction pour envoyer des notifications (simulé ici par un message Streamlit)
 def send_notification(message):
@@ -349,7 +364,11 @@ def add_course():
     underline = st.checkbox("Souligner le texte", key="add_course_underline")
 
     if st.button("Ajouter le cours", key="add_course_button"):
-        if matiere and cours:
+        if not matiere:
+            st.error("Veuillez sélectionner une matière.")
+        elif not cours:
+            st.error("Veuillez entrer le contenu du cours.")
+        else:
             # Sauvegarder le cours dans un fichier JSON
             course_data = {
                 "Matière": matiere,
@@ -1824,6 +1843,10 @@ elif selected_choice == "📅 Gestion du Temps":
     st.subheader("Diagramme circulaire de l'emploi du temps")
     selected_date = st.date_input("Sélectionnez la date pour le diagramme circulaire", value=datetime.now().date())
     generate_pie_chart(selected_date)
+
+    # Ajouter un bouton pour supprimer toutes les activités
+    if st.button("Supprimer toutes les activités"):
+        delete_all_activities()
 
 elif selected_choice == "🏋️‍♂️ Suivi Personnel":
     st.subheader("🏋️‍♂️ Suivi Personnel 🌸")
