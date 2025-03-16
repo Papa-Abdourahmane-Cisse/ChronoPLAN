@@ -357,7 +357,7 @@ def evaluate_time_management():
 # Fonction pour ajouter des cours et des expressions mathématiques
 def add_course():
     st.subheader("Ajouter un cours 📚")
-    matiere = st.selectbox("Sélectionnez la matière", emploi_du_temps["Matière"].unique(), key="add_course_matiere")
+    matiere = st.text_input("Nom de la matière", key="add_course_matiere")
     cours = st.text_area("Contenu du cours", key="add_course_contenu")
     expression = st.text_input("Expression mathématique (utilisez LaTeX)", key="add_course_expression")
     color = st.color_picker("Choisir la couleur du texte", "#000000", key="add_course_color")
@@ -365,7 +365,7 @@ def add_course():
 
     if st.button("Ajouter le cours", key="add_course_button"):
         if not matiere:
-            st.error("Veuillez sélectionner une matière.")
+            st.error("Veuillez entrer le nom de la matière.")
         elif not cours:
             st.error("Veuillez entrer le contenu du cours.")
         else:
@@ -436,7 +436,7 @@ def add_task():
         task = st.text_input("Nom de la tâche", key="add_task_name")
         date = st.date_input("Date d'échéance", key="add_task_date")
         time = st.time_input("Heure d'échéance", key="add_task_time")
-        priority = st.selectbox("Priorité", ["Faible", "Moyenne", "Élevée"], key="add_task_priority")
+        priority = st.text_input("Priorité", key="add_task_priority")
         reminder_email = st.checkbox("Envoyer un rappel par email", key="add_task_reminder")
         submitted = st.form_submit_button("Ajouter la tâche")
 
