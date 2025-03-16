@@ -1,20 +1,16 @@
 import streamlit as st
 import pandas as pd
-import matplotlib.pyplot as plt
-import time
-import pygame
 import sqlite3
 import json
 from datetime import datetime, timedelta
 import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
-
-# Initialiser le mixer de pygame
-pygame.mixer.init()
+import time
+import matplotlib.pyplot as plt
 
 # Configuration de la page
-st.set_page_config(page_title="Gestionnaire d’Emploi du Temps et d’Activités", layout="wide", page_icon="📊")
+st.set_page_config(page_title="ChronoPLAN", layout="wide", page_icon="📊")
 
 # Ajouter des styles CSS personnalisés
 st.markdown(
@@ -22,7 +18,7 @@ st.markdown(
     <style>
     /* Style pour le menu */
     .menu {
-        background-color: #007BFF; /* Couleur bleu */
+        background-color: #333; /* Couleur gris foncé */
         padding: 10px;
         border-radius: 5px;
         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -52,41 +48,43 @@ st.markdown(
 
     /* Style pour les sections */
     .section {
-        border: 2px solid #007BFF; /* Couleur bleu */
+        border: 2px solid #333; /* Couleur gris foncé */
         padding: 15px;
         border-radius: 10px;
         margin-bottom: 20px;
         background-color: #ffffff;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Ombre plus prononcée */
     }
 
     .section h2 {
-        color: #007BFF; /* Couleur bleu */
+        color: #333; /* Couleur gris foncé */
     }
 
     /* Forcer l'affichage des styles CSS */
     .stApp {
-        background-color: #f0f8ff; /* Couleur de fond bleu clair */
+        background-color: #f0f0f0; /* Couleur de fond gris clair */
     }
 
     .stButton>button {
-        background-color: #007BFF; /* Couleur bleu pour les boutons */
+        background-color: #333; /* Couleur gris foncé pour les boutons */
         color: white;
         border-radius: 5px;
         padding: 10px 20px;
         font-size: 16px;
         width: 100%; /* Largeur complète pour les boutons */
         margin-bottom: 10px; /* Espacement entre les boutons */
+        border: 2px solid #555; /* Bordure pour les boutons */
     }
 
     .stButton>button:hover {
-        background-color: #0056b3; /* Couleur bleu plus foncé pour le hover des boutons */
+        background-color: #555; /* Couleur gris plus foncé pour le hover des boutons */
     }
 
     .stForm {
         background-color: #ffffff; /* Couleur de fond blanc pour les formulaires */
         padding: 20px;
         border-radius: 10px;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Ombre plus prononcée */
     }
 
     .stForm input, .stForm select, .stForm textarea {
@@ -94,7 +92,7 @@ st.markdown(
         padding: 10px;
         margin-bottom: 10px;
         border-radius: 5px;
-        border: 1px solid #ccc;
+        border: 2px solid #ccc; /* Bordure plus visible */
     }
 
     .stForm button {
@@ -110,7 +108,7 @@ st.markdown(
 
     /* Style pour les titres en couleur bleu */
     .blue-title {
-        color: #007BFF; /* Couleur bleu */
+        color: #333; /* Couleur gris foncé */
     }
 
     /* Style pour l'encadrement avec fond gris */
@@ -123,16 +121,16 @@ st.markdown(
 
     /* Style pour la page d'accueil */
     .home-section {
-        background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+        background: linear-gradient(135deg, #444, #666);
         padding: 25px;
         border-radius: 15px;
         text-align: center;
-        box-shadow: 3px 3px 12px rgba(0, 0, 0, 0.1);
+        box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.2); /* Ombre plus prononcée */
         transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
     }
     .home-section:hover {
         transform: scale(1.02);
-        box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.15);
+        box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.25); /* Ombre plus prononcée */
     }
     .blue-title {
         color: #ffffff;
@@ -179,14 +177,14 @@ st.markdown(
     .circle {
         width: 150px;
         height: 150px;
-        background-color: #ff9a9e;
+        background-color: #444;
         border-radius: 50%;
         display: flex;
         align-items: center;
         justify-content: center;
         margin: 20px auto;
         position: relative;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Ombre plus prononcée */
     }
     .circle::before {
         content: '🌸';
@@ -244,9 +242,44 @@ def reset_data():
     save_to_csv(pd.DataFrame(columns=["Date", "Matière", "Durée", "Priorité"]))
     st.success("🌸 Toutes les données ont été réinitialisées ! 🌸")
 
+# Fonction pour supprimer toutes les activités
+def delete_all_activities():
+    # Supprimer toutes les entrées de la base de données
+    conn = sqlite3.connect("emploi_du_temps.db")
+    cursor = conn.cursor()
+    cursor.execute("DELETE FROM activites")
+    conn.commit()
+    conn.close()
+
+    # Réinitialiser le fichier CSV
+    reset_data()
+    st.success("Toutes les activités ont été supprimées avec succès !")
+
 # Fonction pour envoyer des notifications (simulé ici par un message Streamlit)
 def send_notification(message):
     st.success(message)
+
+# Fonction pour envoyer des emails
+def send_email(subject, body, to_email, is_reminder=False):
+    from_email = "your_email@gmail.com"  # Remplacez par votre email
+    password = "your_email_password"  # Remplacez par votre mot de passe
+
+    msg = MIMEMultipart()
+    msg["From"] = from_email
+    msg["To"] = to_email
+    msg["Subject"] = subject
+
+    msg.attach(MIMEText(body, "plain"))
+
+    try:
+        server = smtplib.SMTP("smtp.gmail.com", 587)
+        server.starttls()
+        server.login(from_email, password)
+        server.sendmail(from_email, to_email, msg.as_string())
+        server.quit()
+        st.success("Email envoyé avec succès !")
+    except Exception as e:
+        st.error(f"Erreur lors de l'envoi de l'email : {e}")
 
 # Fonction pour générer des rapports hebdomadaires/mensuels
 def generate_report(emploi_du_temps, period="weekly"):
@@ -324,14 +357,18 @@ def evaluate_time_management():
 # Fonction pour ajouter des cours et des expressions mathématiques
 def add_course():
     st.subheader("Ajouter un cours 📚")
-    matiere = st.selectbox("Sélectionnez la matière", emploi_du_temps["Matière"].unique(), key="add_course_matiere")
+    matiere = st.text_input("Nom de la matière", key="add_course_matiere")
     cours = st.text_area("Contenu du cours", key="add_course_contenu")
     expression = st.text_input("Expression mathématique (utilisez LaTeX)", key="add_course_expression")
     color = st.color_picker("Choisir la couleur du texte", "#000000", key="add_course_color")
     underline = st.checkbox("Souligner le texte", key="add_course_underline")
 
     if st.button("Ajouter le cours", key="add_course_button"):
-        if matiere and cours:
+        if not matiere:
+            st.error("Veuillez entrer le nom de la matière.")
+        elif not cours:
+            st.error("Veuillez entrer le contenu du cours.")
+        else:
             # Sauvegarder le cours dans un fichier JSON
             course_data = {
                 "Matière": matiere,
@@ -399,7 +436,7 @@ def add_task():
         task = st.text_input("Nom de la tâche", key="add_task_name")
         date = st.date_input("Date d'échéance", key="add_task_date")
         time = st.time_input("Heure d'échéance", key="add_task_time")
-        priority = st.selectbox("Priorité", ["Faible", "Moyenne", "Élevée"], key="add_task_priority")
+        priority = st.text_input("Priorité", key="add_task_priority")
         reminder_email = st.checkbox("Envoyer un rappel par email", key="add_task_reminder")
         submitted = st.form_submit_button("Ajouter la tâche")
 
@@ -806,49 +843,31 @@ def calculate_weighted_average():
     else:
         st.warning("Les coefficients totaux sont égaux à zéro. Veuillez vérifier les coefficients.")
 
-# Fonction pour démarrer le minuteur Pomodoro
-def start_pomodoro_timer(work_duration, break_duration):
-    work_duration_seconds = work_duration * 60
-    break_duration_seconds = break_duration * 60
-
-    st.session_state.pomodoro_state = "work"
-    st.session_state.duration_seconds = work_duration_seconds
+# Fonction pour démarrer le minuteur personnalisé
+def start_custom_timer(duration_minutes):
+    duration_seconds = duration_minutes * 60
+    st.session_state.duration_seconds = duration_seconds
     st.session_state.elapsed_time = 0
+    st.session_state.timer_running = True
 
-    while st.session_state.pomodoro_state == "work" and st.session_state.elapsed_time < st.session_state.duration_seconds:
+    # Créer un espace réservé pour le texte du minuteur
+    timer_text = st.empty()
+
+    while st.session_state.timer_running and st.session_state.elapsed_time < st.session_state.duration_seconds:
         time.sleep(1)
         st.session_state.elapsed_time += 1
         remaining_time = st.session_state.duration_seconds - st.session_state.elapsed_time
-        st.write(f"Temps restant : {remaining_time // 60} minutes {remaining_time % 60} secondes")
+        timer_text.write(f"Temps restant : {remaining_time // 60} minutes {remaining_time % 60} secondes")
 
-    st.success("Temps de travail écoulé ! Prenez une pause.")
-    pygame.mixer.music.load("notification_sound.mp3")  # Assurez-vous d'avoir un fichier sonore
-    pygame.mixer.music.play()
+    if st.session_state.timer_running:
+        timer_text.success("Temps écoulé !")
 
-    st.session_state.pomodoro_state = "break"
-    st.session_state.duration_seconds = break_duration_seconds
-    st.session_state.elapsed_time = 0
-
-    while st.session_state.pomodoro_state == "break" and st.session_state.elapsed_time < st.session_state.duration_seconds:
-        time.sleep(1)
-        st.session_state.elapsed_time += 1
+# Fonction pour mettre en pause le minuteur personnalisé
+def pause_custom_timer():
+    if "elapsed_time" in st.session_state and "duration_seconds" in st.session_state:
         remaining_time = st.session_state.duration_seconds - st.session_state.elapsed_time
-        st.write(f"Temps restant : {remaining_time // 60} minutes {remaining_time % 60} secondes")
-
-    st.success("Pause terminée ! Reprenez le travail.")
-    pygame.mixer.music.load("notification_sound.mp3")
-    pygame.mixer.music.play()
-
-# Fonction pour mettre en pause le minuteur Pomodoro
-def pause_pomodoro_timer():
-    if st.session_state.pomodoro_state in ["work", "break"]:
-        st.session_state.pomodoro_state = "paused"
-        remaining_time = st.session_state.duration_seconds - st.session_state.elapsed_time
-        st.write(f"Temps restant : {remaining_time // 60} minutes {remaining_time % 60} secondes")
-
-# Fonction pour arrêter le son
-def stop_sound():
-    pygame.mixer.music.stop()
+        st.info(f"Temps restant : {remaining_time // 60} minutes {remaining_time % 60} secondes")
+        st.session_state.timer_running = False
 
 # Fonction pour enregistrer le temps passé sur une activité
 def log_time_spent(activity, start_time, end_time):
@@ -1207,6 +1226,7 @@ def generate_financial_report(transactions):
 # Fonction pour suivre la santé
 def track_health():
     st.subheader("Suivi de la Santé 🏋️‍♂️")
+    st.write("Suivez vos progrès personnels et améliorez vos compétences.")
 
     # Ajouter une entrée de santé
     st.subheader("Ajouter une entrée de santé 🏋️‍♂️")
@@ -1557,7 +1577,7 @@ def delete_reading(index):
     else:
         st.error("Index de lecture invalide.")
 
-# Fonction pour intégrer des applications de méditation
+# Fonction pour intégrer avec les applications de méditation
 def integrate_meditation_apps():
     st.subheader("Intégration avec les Applications de Méditation 🧘")
 
@@ -1691,21 +1711,33 @@ def delete_language_progress(index):
     else:
         st.error("Index de progrès en langue invalide.")
 
+# Fonction pour intégrer avec les réseaux sociaux
+def integrate_with_social_media():
+    st.subheader("📸 Intégration avec les Réseaux Sociaux 🌸")
+    st.write("Intégrez vos comptes de réseaux sociaux pour suivre vos activités et partager vos progrès.")
+
+    # Exemple d'intégration avec Twitter (vous pouvez ajouter d'autres réseaux sociaux)
+    st.subheader("Intégration avec Twitter")
+    twitter_username = st.text_input("Nom d'utilisateur Twitter", key="twitter_username")
+    if st.button("Intégrer avec Twitter", key="integrate_twitter_button"):
+        if twitter_username:
+            st.success(f"Compte Twitter {twitter_username} intégré avec succès !")
+        else:
+            st.error("Veuillez entrer un nom d'utilisateur Twitter.")
+
 # Interface utilisateur
 st.title("🌸📚 Gestionnaire d’Emploi du Temps et d’Activités ⏰🌸")
 
 # Charger les préférences utilisateur
 preferences = load_preferences()
 change_theme(preferences["theme"])
-#logo
-st.logo("Sans titre.jpg")
 
 # Afficher le cercle décoratif avec des emojis
 st.markdown(
     """
     <div class="circle">
         <span class="emoji emoji-1">✨</span>
-        <span class="emoji emoji-2">🌟</span>
+        <span class="emoji emoji-2">🌸</span>
         <span class="emoji emoji-3">💫</span>
         <span class="emoji emoji-4">🌠</span>
     </div>
@@ -1760,7 +1792,7 @@ elif selected_choice == "📅 Gestion du Temps":
     st.subheader("Ajouter une nouvelle activité 📅")
     with st.form(key="add_activity_form"):
         date = st.date_input("Date", key="add_activity_date")
-        matiere = st.selectbox("Matière", emploi_du_temps["Matière"].unique(), key="add_activity_matiere")
+        matiere = st.text_input("Nom de l'activité", key="add_activity_matiere")
         duree = st.number_input("Durée (en heures)", min_value=0.0, step=0.1, key="add_activity_duree")
         priorite = st.selectbox("Priorité", ["Faible", "Moyenne", "Élevée"], key="add_activity_priorite")
         submitted = st.form_submit_button("Ajouter l'activité")
@@ -1811,6 +1843,10 @@ elif selected_choice == "📅 Gestion du Temps":
     st.subheader("Diagramme circulaire de l'emploi du temps")
     selected_date = st.date_input("Sélectionnez la date pour le diagramme circulaire", value=datetime.now().date())
     generate_pie_chart(selected_date)
+
+    # Ajouter un bouton pour supprimer toutes les activités
+    if st.button("Supprimer toutes les activités"):
+        delete_all_activities()
 
 elif selected_choice == "🏋️‍♂️ Suivi Personnel":
     st.subheader("🏋️‍♂️ Suivi Personnel 🌸")
@@ -1894,7 +1930,7 @@ elif selected_choice == "🛠️ Outils de Productivité":
         "📝 Évaluation",
         "🌸 Préférences",
         "📈 Temps Passé",
-        "🕒 Minuteur Pomodoro"
+        "⏰ Minuteur Personnalisé"
     ], index=0)
 
     if productivity_tools_choice == "📈 Rapports":
@@ -1926,7 +1962,7 @@ elif selected_choice == "🛠️ Outils de Productivité":
             st.success("Préférences enregistrées avec succès !")
 
     elif productivity_tools_choice == "📈 Temps Passé":
-        st.subheader("📈 Temps Passé sur les Activités 🌸")
+        st.subheader("📈 Temps Passé sur les activités 🌸")
         activity = st.text_input("Nom de l'activité")
         start_time = st.time_input("Heure de début")
         end_time = st.time_input("Heure de fin")
@@ -1934,18 +1970,14 @@ elif selected_choice == "🛠️ Outils de Productivité":
             log_time_spent(activity, start_time.strftime("%H:%M:%S"), end_time.strftime("%H:%M:%S"))
         view_time_log()
 
-    elif productivity_tools_choice == "🕒 Minuteur Pomodoro":
-        st.subheader("🕒 Minuteur Pomodoro 🌸")
-        work_duration = st.number_input("Durée de travail (en minutes)", min_value=1, step=1, key="pomodoro_work_duration")
-        break_duration = st.number_input("Durée de pause (en minutes)", min_value=1, step=1, key="pomodoro_break_duration")
-        if st.button("Démarrer le minuteur Pomodoro", key="start_pomodoro_timer_button"):
-            start_pomodoro_timer(work_duration, break_duration)
+    elif productivity_tools_choice == "⏰ Minuteur Personnalisé":
+        st.subheader("⏰ Minuteur Personnalisé 🌸")
+        duration_minutes = st.number_input("Durée (en minutes)", min_value=1, step=1, key="custom_timer_duration")
+        if st.button("Démarrer le minuteur", key="start_custom_timer_button"):
+            start_custom_timer(duration_minutes)
 
-        if st.button("Mettre en pause le minuteur Pomodoro", key="pause_pomodoro_timer_button"):
-            pause_pomodoro_timer()
-
-        if st.button("Arrêter le son", key="stop_sound_button"):
-            stop_sound()
+        if st.button("Mettre en pause le minuteur", key="pause_custom_timer_button"):
+            pause_custom_timer()
 
 elif selected_choice == "🛠️ Outils Personnels":
     st.subheader("🛠️ Outils Personnels 🌸")
