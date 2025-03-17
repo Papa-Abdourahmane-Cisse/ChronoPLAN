@@ -700,7 +700,7 @@ def manage_grades_and_coefficients():
 
     # Ajouter une note
     st.subheader("Ajouter une note 📈")
-    matiere = st.selectbox("Sélectionnez la matière", emploi_du_temps["Matière"].unique(), key="add_grades_matiere")
+    matiere = st.text_input("Nom de la matière", key="add_grades_matiere")
     grade = st.number_input("Note", min_value=0.0, max_value=20.0, step=0.1, key="add_grades_grade")
     date = st.date_input("Date de la note", key="add_grades_date")
 
@@ -716,7 +716,7 @@ def manage_grades_and_coefficients():
 
     # Définir un coefficient
     st.subheader("Définir un coefficient 📚")
-    matiere_coef = st.selectbox("Sélectionnez la matière", emploi_du_temps["Matière"].unique(), key="set_coefficients_matiere")
+    matiere_coef = st.text_input("Nom de la matière", key="set_coefficients_matiere")
     coefficient = st.number_input("Coefficient", min_value=0.0, step=0.1, key="set_coefficients_coefficient")
 
     if st.button("Ajouter le coefficient", key="set_coefficients_button"):
