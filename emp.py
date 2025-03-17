@@ -11,6 +11,7 @@ import matplotlib.pyplot as plt
 
 # Configuration de la page
 st.set_page_config(page_title="ChronoPLAN", layout="wide", page_icon="📊")
+# Test
 
 # Ajouter des styles CSS personnalisés
 st.markdown(
