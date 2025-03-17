@@ -9,6 +9,7 @@ from email.mime.multipart import MIMEMultipart
 import time
 import matplotlib.pyplot as plt
 
+# commgi
 # Configuration de la page
 st.set_page_config(page_title="ChronoPLAN", layout="wide", page_icon="📊")
 
