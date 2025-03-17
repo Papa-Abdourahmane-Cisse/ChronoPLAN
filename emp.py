@@ -9,7 +9,6 @@ from email.mime.multipart import MIMEMultipart
 import time
 import matplotlib.pyplot as plt
 
-# commgi
 # Configuration de la page
 st.set_page_config(page_title="ChronoPLAN version 2", layout="wide", page_icon="📊")
 
@@ -1712,20 +1711,6 @@ def delete_language_progress(index):
     else:
         st.error("Index de progrès en langue invalide.")
 
-# Fonction pour intégrer avec les réseaux sociaux
-def integrate_with_social_media():
-    st.subheader("📸 Intégration avec les Réseaux Sociaux 🌸")
-    st.write("Intégrez vos comptes de réseaux sociaux pour suivre vos activités et partager vos progrès.")
-
-    # Exemple d'intégration avec Twitter (vous pouvez ajouter d'autres réseaux sociaux)
-    st.subheader("Intégration avec Twitter")
-    twitter_username = st.text_input("Nom d'utilisateur Twitter", key="twitter_username")
-    if st.button("Intégrer avec Twitter", key="integrate_twitter_button"):
-        if twitter_username:
-            st.success(f"Compte Twitter {twitter_username} intégré avec succès !")
-        else:
-            st.error("Veuillez entrer un nom d'utilisateur Twitter.")
-
 # Interface utilisateur
 st.title("🌸📚 Gestionnaire d’Emploi du Temps et d’Activités ⏰🌸")
 
@@ -1986,15 +1971,11 @@ elif selected_choice == "🛠️ Outils Personnels":
     # Sous-menu pour les outils personnels
     personal_tools_choice = st.sidebar.radio("Outils Personnels", [
         "💸 Gestion des Finances Personnelles",
-        "📸 Intégration avec les Réseaux Sociaux",
         "🧘 Applications de Méditation"
     ], index=0)
 
     if personal_tools_choice == "💸 Gestion des Finances Personnelles":
         manage_personal_finances()
-
-    elif personal_tools_choice == "📸 Intégration avec les Réseaux Sociaux":
-        integrate_with_social_media()
 
     elif personal_tools_choice == "🧘 Applications de Méditation":
         integrate_meditation_apps()
